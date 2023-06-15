@@ -1,0 +1,60 @@
+<h3 style="text-align:center ;margin-bottom: 1%;margin-top: 1%;">Theaters List</h3>
+    <fieldset>
+    <select id="top" style="width: 50%;margin-left: 25%;" (change)="result(cine.value)" #cine>
+      <option></option>
+  <option *ngFor="let box of cinema">{{box | titlecase}}</option>
+
+</select>
+</fieldset>
+
+
+
+<div class="container">  
+    <form id="contact" #userForm="ngForm">
+      <h3>Add Cinema</h3>
+      <h5>Theater Name:</h5>
+      <fieldset>
+        <input  placeholder="Name of Theater" type="text" tabindex="1" required autofocus #name name="theatername" [(ngModel)]="theatername" [class.invalid]="!userForm.form.controls['theatername']?.valid && userForm.form.controls['theatername']?.touched">
+      </fieldset>
+      <h5>City:</h5>
+      <fieldset>
+        <input value="{{cityname}}" placeholder="Location of Theater" type="text" tabindex="2" required #city name="cityname" [(ngModel)]="cityname" [class.invalid]="!userForm.form.controls['cityname']?.valid && userForm.form.controls['cityname']?.touched">
+      </fieldset>
+      <h5>Ticket Price:</h5>
+      <fieldset>
+        <input value="{{ticket}}" min="1" placeholder="Ticket Price in Rupees" type="number" tabindex="2" required #ticketPrice name="ticket" [(ngModel)]="ticket" [class.invalid]="!userForm.form.controls['ticket']?.valid && userForm.form.controls['ticket']?.touched">
+      </fieldset>
+      <h5>Row Values:</h5>
+      <fieldset>
+        <input value="{{noofrows}}" placeholder="Row values in alphabet" type="text" tabindex="2" required #rows name="noofrows" [(ngModel)]="noofrows" [class.invalid]="!userForm.form.controls['noofrows']?.valid && userForm.form.controls['noofrows']?.touched"> 
+      </fieldset>
+      <h5>Column Values:</h5>
+      <fieldset>
+        <input value="{{noofcolumns}}" placeholder="Column values in number" type="text" tabindex="2" required #columns name="noofcolumns" [(ngModel)]="noofcolumns" [class.invalid]="!userForm.form.controls['noofcolumns']?.valid && userForm.form.controls['noofcolumns']?.touched"> 
+      </fieldset>
+      <h5>Movie:</h5>
+      <fieldset>
+          <select #movie>
+
+        <option *ngFor="let item of list" value="{{item}}" >{{item}}</option>
+
+      </select>
+      </fieldset>
+      <h5>Show Time:</h5>
+      <fieldset>
+        <input placeholder="Show Start time" type="text" tabindex="3" required #startAt name="showtime" [(ngModel)]="showtime" [class.invalid]="!userForm.form.controls['showtime']?.valid && userForm.form.controls['showtime']?.touched">
+      </fieldset>
+      <h5>Show Date:</h5>
+      <fieldset>
+        <input placeholder="Show Date of Movie" type="date" tabindex="3" required #date name="showdate" [(ngModel)]="showdate" [class.invalid]="!userForm.form.controls['showdate']?.valid && userForm.form.controls['showdate']?.touched">
+      </fieldset>
+      <h5>Image Url:</h5>
+      <fieldset>
+        <input value="{{imageurl}}" placeholder="Imaage Url of Theater" type="url" tabindex="4" required #image name="imageurl" [(ngModel)]="imageurl" [class.invalid]="!userForm.form.controls['imageurl']?.valid && userForm.form.controls['imageurl']?.touched">
+      </fieldset>
+      <fieldset>
+        <button name="submit" type="submit" id="contact-submit" (click)="submit(name.value,city.value,ticketPrice.value,rows.value,columns.value,movie.value,startAt.value,date.value,image.value)" data-submit="...Sending">Submit</button>
+      </fieldset>
+    
+    </form>
+  </div>

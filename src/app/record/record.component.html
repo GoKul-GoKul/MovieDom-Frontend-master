@@ -1,0 +1,53 @@
+<div class="loader"  *ngIf="!list;"></div>
+<div class="head"><h3 id="top" >Username: <span style="color: crimson;">{{username.name | titlecase }}</span></h3>
+  <h3 id="left">Total Amount: <span style="color: crimson;">{{amt | currency:'INR' }}</span></h3>
+</div>
+<div class="row" *ngIf="list.length>0; else elseblock">
+    <div class="column" *ngFor="let item of list" >
+      <div class="card">
+            <tr style="text-align: center;">
+                <td >
+          <h3>Date : <span style="color: crimson;">{{item.date | date }}</span></h3> 
+                </td>
+        <td>
+          <h3>Movie Name : <span style="color: crimson;">{{item.movieName  | titlecase}}</span></h3>
+        </td>
+        <td>
+          <h3>Theater Name : <span style="color: crimson;">{{item.cinemaName | titlecase}}</span></h3>
+        </td>
+        </tr>
+        <tr style="text-align: center;">
+          <td>
+            <h3>Show Time : <span style="color: crimson;">{{item.startAt}}</span></h3>
+          </td>
+            <td>
+          <h3>Seats Booked : <span style="color: crimson;">{{item.seats}}</span></h3>
+        </td>
+        <td>
+          <h3>Total Amount : <span style="color: crimson;">{{item.total | currency:'INR'}}</span></h3>
+        </td>
+        </tr>
+        <button id="book" (click)="delete(item.id)">Delete</button>
+        </div>
+  </div>
+  </div>
+  <ng-template #elseblock >
+    <h1 style="text-align: center;">No Bookings Available</h1>
+  </ng-template>
+
+<!-- <table *ngIf="list" id="record" >
+    <tr>
+      <th>Date</th>
+      <th>Movie Name</th>
+      <th>Cinema Name</th>
+      <th>No of Seats</th>
+      <th>Total</th>
+    </tr>
+     <tr *ngFor="let item of list" style="text-align:center">
+        <td>{{item.date | date}}</td>
+        <td>{{item.movieName | titlecase}}</td>
+        <td>{{item.cinemaName | titlecase}}</td>
+        <td>{{item.seats}}</td>
+        <td>{{item.total | currency:'INR'}}</td>
+     </tr>
+   </table> -->
